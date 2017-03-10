@@ -4,7 +4,7 @@
   <groupId>com.nickliu</groupId>
   <artifactId>java-web-demo</artifactId>
   <packaging>war</packaging>
-  <version>1.0-SNAPSHOT</version>
+  <version>1.0.0</version>
   <name>java-web-demo Maven Webapp</name>
   <url>http://maven.apache.org</url>
   <dependencies>
