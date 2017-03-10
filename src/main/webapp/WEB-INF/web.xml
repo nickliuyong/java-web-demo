@@ -1,0 +1,72 @@
+<!DOCTYPE web-app PUBLIC
+ "-//Sun Microsystems, Inc.//DTD Web Application 2.3//EN"
+ "http://java.sun.com/dtd/web-app_2_3.dtd" >
+
+<web-app>
+  <display-name>Archetype Created Web Application</display-name>
+
+  <!--web.xml  的加载顺序是： context-param -> listener -> filter -> servlet ，
+  而同个类型之间的实际程序调用的时候的顺序是根据对应的  mapping  的顺序进行调用的-->
+  
+  <context-param>
+    <param-name>params</param-name>
+    <param-value>paramsValue</param-value>
+  </context-param>
+  
+  <filter>
+    <filter-name>firstDemoFilter</filter-name>
+    <filter-class>filter.FirstDemoFilter</filter-class>
+    <init-param>
+      <param-name>first_filter_param</param-name>
+      <param-value>first_filter_param_1</param-value>
+    </init-param>
+  </filter>
+
+  <!--<filter>
+    <filter-name>secondDemoFilter</filter-name>
+    <filter-class>filter.SecondDemoFilter</filter-class>
+    <init-param>
+      <param-name>second_filter_param</param-name>
+      <param-value>second_filter_param_2</param-value>
+    </init-param>
+  </filter>-->
+
+  <filter-mapping>
+    <filter-name>firstDemoFilter</filter-name>
+    <url-pattern>/*</url-pattern>
+  </filter-mapping>
+
+  <!--<filter-mapping>
+    <filter-name>secondDemoFilter</filter-name>
+    <url-pattern>/*</url-pattern>
+  </filter-mapping>-->
+
+  <listener>
+    <listener-class>listener.FirstDemoListener</listener-class>
+  </listener>
+
+  <listener>
+    <listener-class>listener.SecondDemoListener</listener-class>
+  </listener>
+
+  <servlet>
+    <servlet-name>firstDemoServlet</servlet-name>
+    <servlet-class>servlet.FirstDemoServlet</servlet-class>
+  </servlet>
+
+  <servlet>
+    <servlet-name>secondDemoServlet</servlet-name>
+    <servlet-class>servlet.SecondDemoServlet</servlet-class>
+  </servlet>
+  
+  <servlet-mapping>
+    <servlet-name>firstDemoServlet</servlet-name>
+    <url-pattern>/firstDemoServlet</url-pattern>
+  </servlet-mapping>
+
+  <servlet-mapping>
+    <servlet-name>secondDemoServlet</servlet-name>
+    <url-pattern>/secondDemoServlet</url-pattern>
+  </servlet-mapping>
+
+</web-app>
