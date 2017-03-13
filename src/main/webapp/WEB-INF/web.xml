@@ -9,9 +9,11 @@
   而同个类型之间的实际程序调用的时候的顺序是根据对应的  mapping  的顺序进行调用的-->
   
   <context-param>
-    <param-name>params</param-name>
-    <param-value>paramsValue</param-value>
+    <param-name>contextConfigLocation</param-name>
+    <param-value>classpath:spring/applicationContext.xml</param-value>
   </context-param>
+
+
   
   <filter>
     <filter-name>firstDemoFilter</filter-name>
@@ -47,6 +49,10 @@
 
   <listener>
     <listener-class>listener.SecondDemoListener</listener-class>
+  </listener>
+
+  <listener>
+    <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
   </listener>
 
   <servlet>

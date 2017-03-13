@@ -25,7 +25,7 @@ public class FirstDemoServlet extends HttpServlet {
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         super.doGet(req, resp);
         LOG.info("FirstDemoServlet doGet...");
-        LOG.info("first servlet address {}",this);
+        LOG.info("classloader {}",this.getClass().getClassLoader());
         resp.getWriter().write("hello i am FirstDemoServlet");
     }
 

@@ -4,7 +4,7 @@
   <groupId>com.nickliu</groupId>
   <artifactId>java-web-demo</artifactId>
   <packaging>war</packaging>
-  <version>1.0.0</version>
+  <version>1.0.1-SNAPSHOT</version>
   <name>java-web-demo Maven Webapp</name>
   <url>http://maven.apache.org</url>
   <dependencies>
@@ -19,6 +19,14 @@
       <groupId>org.slf4j</groupId>
       <artifactId>slf4j-log4j12</artifactId>
       <version>1.7.21</version>
+    </dependency>
+
+    <!--spring-->
+
+    <dependency>
+      <groupId>org.springframework</groupId>
+      <artifactId>spring-web</artifactId>
+      <version>4.3.7.RELEASE</version>
     </dependency>
 
   </dependencies>
