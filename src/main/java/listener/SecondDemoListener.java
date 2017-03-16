@@ -2,6 +2,8 @@ package listener;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.context.ApplicationContext;
+import org.springframework.web.context.support.WebApplicationContextUtils;
 
 import javax.servlet.ServletContext;
 import javax.servlet.ServletContextEvent;
@@ -20,9 +22,9 @@ public class SecondDemoListener implements ServletContextListener {
 
     public void contextInitialized(ServletContextEvent servletContextEvent) {
         ServletContext context = servletContextEvent.getServletContext();
-        LOG.info("2-----------context {},",context);
-        context.setAttribute("SecondDemoListener","SecondDemoListener");
-        LOG.info("SecondDemoListener  上下文初始化...");
+        LOG.info("获取spring web applicationContext");
+        ApplicationContext applicationContext = WebApplicationContextUtils.getWebApplicationContext(context);
+        LOG.info("----------");
     }
 
     public void contextDestroyed(ServletContextEvent servletContextEvent) {

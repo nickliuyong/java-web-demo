@@ -1,12 +1,35 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:aop="http://www.springframework.org/schema/aop"
        xsi:schemaLocation="http://www.springframework.org/schema/beans
-        http://www.springframework.org/schema/beans/spring-beans.xsd">
+        http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/context
+        http://www.springframework.org/schema/context/spring-context.xsd
+        http://www.springframework.org/schema/aop
+        http://www.springframework.org/schema/aop/spring-aop.xsd">
 
+    <context:component-scan base-package="spring.bean"/>
     <!-- more bean definitions go here -->
-
-    <bean id="firstTestBean"  class="spring.bean.FirstTestBean" >
+    <bean id="firstTestBean" class="spring.bean.FirstTestBean" init-method="init">
+        <property name="secondTestBean" ref="secondTestBean"/>
     </bean>
 
+    <bean id="secondTestBean" class="spring.bean.SecondTestBean">
+        <!-- <property name="firstTestBean" ref="firstTestBean" />-->
+    </bean>
+
+    <bean id="thirdTestBean" class="spring.bean.ThirdTestBean"/>
+
+    <bean id="aopTest" class="aop.AopTest" />
+
+    <aop:config>
+        <aop:aspect id="test" ref="aopTest">
+            <aop:pointcut id="cut" expression="execution(* spring.bean.FirstTestBean.*(..))" />
+            <aop:before pointcut-ref="cut" method="doBefore" />
+            <aop:after pointcut-ref="cut" method="doAfter" />
+            <aop:around pointcut-ref="cut" method="doAround" />
+        </aop:aspect>
+    </aop:config>
 </beans>

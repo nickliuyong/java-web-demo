@@ -23,7 +23,6 @@ public class SecondDemoFilter implements Filter {
 
     private static final Logger LOG = LoggerFactory.getLogger(SecondDemoFilter.class);
 
-
     public void init(FilterConfig filterConfig) throws ServletException {
         Enumeration<String> enumeration = filterConfig.getInitParameterNames();
         while(enumeration.hasMoreElements()){
